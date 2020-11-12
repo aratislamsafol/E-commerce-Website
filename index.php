@@ -1,3 +1,4 @@
+<?php include('config.php'); ?>
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
@@ -15,6 +16,7 @@
 	 <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
 	<link rel="stylesheet" href="css/style1.css" />
+	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 	<section class="top-bar bg-dark p-1 text-white">
@@ -357,37 +359,115 @@
        </div>
 	</section>
 	<!--Fuck off latest product-->
+
 	<section class="intel-catagory p-4">
 		<h3>Intel Catagory</h3>
 		<div class="owl-carousel owl-theme">
-				<div class="item">
+		
+		<?php
+			$show = "SELECT*FROM products";
+			$result = mysqli_query( $con, $show );
+			if(mysqli_num_rows($result) > 0){
+				while($product = mysqli_fetch_assoc($result)){
+					
+					echo '<div class="item">
+						<div class="card" style="width: 20rem;">
+							<div class="card-img">
+
+								<figure>
+									<img class="card-img-top" src="http://www.binarylogic.com.bd/wp-content/uploads/2020/06/Avengers_Tristan_Eaton_i7_Left_Top_Down_GRAD_BKG-300x300.jpg" class="latest-product-image" alt="Card image cap"/>
+								</figure>
+
+								<div class="card-icon1">
+									<span><i class="fas fa-heart"></i></span>
+								</div>
+
+								<div class="clearfix"></div>
+
+								<div class="card-icon2">
+									<span><i class="fab fa-buffer mt-1"></i></span>
+								</div>
+									
+								<a href="#0" class="cd-add-to-cart js-cd-add-to-cart cart-caption text-center" data-price="25.99"><i class="fas fa-cart-arrow-down">&nbsp; Add To Cart</i></a>
+
+							</div>
+							
+							<div class="card-body text-center">
+								<h5 class="card-title">'.$product['p_title'].'</h5>
+								<p class="card-text">'.$product['p_des'].'</p>
+								<a href="#" class="btn btn-primary">Details</a>
+							</div>
+
+						</div>
+					</div>
+					';
+				}
+			}else{
+				echo '
+					<div class="item">
+						<div class="card" style="width: 20rem;">
+							<div class="card-img">
+
+								<figure>
+									<img class="card-img-top" src="http://www.binarylogic.com.bd/wp-content/uploads/2020/06/Avengers_Tristan_Eaton_i7_Left_Top_Down_GRAD_BKG-300x300.jpg" class="latest-product-image" alt="Card image cap"/>
+								</figure>
+
+								<div class="card-icon1">
+									<span><i class="fas fa-heart"></i></span>
+								</div>
+
+								<div class="clearfix"></div>
+
+								<div class="card-icon2">
+									<span><i class="fab fa-buffer mt-1"></i></span>
+								</div>
+									
+								<a href="#0" class="cd-add-to-cart js-cd-add-to-cart cart-caption text-center" data-price="25.99"><i class="fas fa-cart-arrow-down">&nbsp; Add To Cart</i></a>
+
+							</div>
+							
+							<div class="card-body text-center">
+								<h5 class="card-title">Core i7</h5>
+								<p class="card-text">Intel® Core™ i7-1185G7 Processor (12M Cache, up to 4.80 GHz)</p>
+								<a href="#" class="btn btn-primary">Details</a>
+							</div>
+
+						</div>
+					</div>
+				';
+			}
+		?>
+			<!--<div class="item">
 				<div class="card" style="width: 20rem;">
-				<div class="card-img">
-					<figure>
-					<img class="card-img-top" src="http://www.binarylogic.com.bd/wp-content/uploads/2020/06/Avengers_Tristan_Eaton_i7_Left_Top_Down_GRAD_BKG-300x300.jpg" class="latest-product-image" alt="Card image cap"/>
-				</figure>
-				<div class="card-icon1">
-					<span><i class="fas fa-heart"></i></span>
+					<div class="card-img">
+
+						<figure>
+							<img class="card-img-top" src="http://www.binarylogic.com.bd/wp-content/uploads/2020/06/Avengers_Tristan_Eaton_i7_Left_Top_Down_GRAD_BKG-300x300.jpg" class="latest-product-image" alt="Card image cap"/>
+						</figure>
+
+						<div class="card-icon1">
+							<span><i class="fas fa-heart"></i></span>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<div class="card-icon2">
+							<span><i class="fab fa-buffer mt-1"></i></span>
+						</div>
+							
+						<a href="#0" class="cd-add-to-cart js-cd-add-to-cart cart-caption text-center" data-price="25.99"><i class="fas fa-cart-arrow-down">&nbsp; Add To Cart</i></a>
+
+					</div>
 					
+					<div class="card-body text-center">
+						<h5 class="card-title">Core i7</h5>
+						<p class="card-text">Intel® Core™ i7-1185G7 Processor (12M Cache, up to 4.80 GHz)</p>
+						<a href="#" class="btn btn-primary">Details</a>
+					</div>
+
 				</div>
-				<div class="clearfix"></div>
-				<div class="card-icon2">
-					<span><i class="fab fa-buffer mt-1"></i></span>
-				</div>
-					
-				
-				<div class="cart-caption text-center">
-					<p><i class="fas fa-cart-arrow-down">&nbsp; Add To Cart</i></p>
-				</div>
-				</div>
-				
-				<div class="card-body text-center">
-					<h5 class="card-title">Core i7</h5>
-					<p class="card-text">Intel® Core™ i7-1185G7 Processor (12M Cache, up to 4.80 GHz)</p>
-					<a href="#" class="btn btn-primary">Details</a>
-				</div>
-				</div>
-            </div> 
+			</div>
+			
 			<div class="item">
 				<div class="card" style="width: 20rem;">
 				<div class="card-img">
@@ -404,9 +484,8 @@
 				</div>
 					
 				
-				<div class="cart-caption text-center">
-					<p><i class="fas fa-cart-arrow-down">&nbsp; Add To Cart</i></p>
-				</div>
+				<a href="#0" class="cd-add-to-cart js-cd-add-to-cart cart-caption text-center" data-price="100.21"><i class="fas fa-cart-arrow-down">&nbsp; Add To Cart</i></a>
+
 				</div>
 				
 				<div class="card-body text-center">
@@ -432,9 +511,8 @@
 				</div>
 					
 				
-				<div class="cart-caption text-center">
-					<p><i class="fas fa-cart-arrow-down">&nbsp; Add To Cart</i></p>
-				</div>
+				<a href="#0" class="cd-add-to-cart js-cd-add-to-cart cart-caption text-center" data-price="555.99"><i class="fas fa-cart-arrow-down">&nbsp; Add To Cart</i></a>
+
 				</div>
 				
 				<div class="card-body text-center">
@@ -445,7 +523,7 @@
 					<a href="#" class="btn btn-primary">Details</a>
 				</div>
 				</div>
-            </div>
+            </div>-->
 			</div>		
 	</section>
 	<!--Fuck off Intel Catagory-->
@@ -845,6 +923,41 @@
 			</div>
 		</div>
 	</section>
+
+
+	<!-- Cart -->
+	<div class="cd-cart cd-cart--empty js-cd-cart">
+		<a href="#0" class="cd-cart__trigger">
+			<ul class="cd-cart__count"> <!-- cart items count -->
+				<li>0</li>
+				<li>0</li>
+			</ul> <!-- .cd-cart__count -->
+		</a>
+	
+		<div class="cd-cart__content">
+			<div class="cd-cart__layout">
+				<header class="cd-cart__header">
+					<h2>Cart</h2>
+					<span class="cd-cart__undo">Item removed. <a href="#0">Undo</a></span>
+				</header>
+				
+				<div class="cd-cart__body">
+					<ul>
+						<!-- products added to the cart will be inserted here using JavaScript -->
+					</ul>
+				</div>
+	
+				<footer class="cd-cart__footer">
+					<a href="#0" class="cd-cart__checkout">
+			  <em>Checkout - $<span>0</span>
+				<svg class="icon icon--sm" viewBox="0 0 24 24"><g fill="none" stroke="currentColor"><line stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="12" x2="21" y2="12"/><polyline stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="15,6 21,12 15,18 "/></g>
+				</svg>
+			  </em>
+			</a>
+				</footer>
+			</div>
+		</div> <!-- .cd-cart__content -->
+	</div> <!-- cd-cart -->
 	
 	 <script src="js/fontawesome.js"></script>
 	  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -859,7 +972,10 @@
 
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/activatate.js"></script>
-    <script src="js/lightbox-plus-jquery.min.js"></script>
+	<script src="js/lightbox-plus-jquery.min.js"></script>
+	
+	<script src="js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
+	<script src="js/main.js"></script>
 
     <script>
         $(".service").on('mouseenter', function () {
